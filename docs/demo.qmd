@@ -1,0 +1,161 @@
+---
+title: "Kedulytics Simplied"
+format: html
+editor: visual
+---
+
+## Introduction Statistical Analysis Using Different Softwares
+
+![](yes_kedulytics final.jpg){fig-align="center" width="228"}
+
+Welcome to the Kedulytics Statistical Analysis Tutorial Book! This resource is designed to help students, researchers, public health professionals, and data analysts navigate the statistical methods commonly used in academic research and data analysis.
+
+Organized by key aspects of the statistical analysis process, this book provides a structured guide to finding relevant tutorials on the Kedulytics YouTube channel. Topics range from data management and descriptive statistics to hypothesis testing, regression analysis, advanced statistical methods, data visualization, and interpretation of results.
+
+Whether you are beginning your statistical journey or seeking guidance on a specific analytical technique, this book serves as a practical reference to help you identify relevant tutorials, strengthen your analytical skills, and apply appropriate statistical methods to your research.
+
+## Learning Objectives
+
+By the end of this tutorial book, readers should be able to:
+
+1.  **Understand fundamental statistical concepts** and recognize their applications in research and data analysis.
+
+2.  **Prepare and manage research data** by importing datasets, cleaning data, recoding variables, and addressing missing values.
+
+3.  **Perform descriptive statistical analyses** using appropriate measures of central tendency, variability, frequencies, and proportions.
+
+4.  **Select and conduct appropriate statistical tests** based on research questions, variable types, study designs, and underlying assumptions.
+
+5.  **Apply inferential statistical methods**, including hypothesis testing, correlation, group comparisons, and regression analysis.
+
+6.  **Create and interpret data visualizations** that communicate research findings clearly and accurately.
+
+7.  **Interpret statistical outputs** using p-values, confidence intervals, effect sizes, and other relevant measures.
+
+8.  **Use statistical software effectively** by following practical tutorials relevant to their analytical needs.
+
+9.  **Present statistical findings** in clear, reproducible, and scientifically appropriate formats for research reports, theses, dissertations, and publications.
+
+10. **Develop confidence in independent data analysis** by identifying and following tutorials that address specific research questions and analytical challenges.
+
+The objectives are intended to guide readers through the learning process, from understanding basic statistical principles to applying analytical methods in practical research settings.
+
+## Welcome Video 
+
+Watch this short video to discover why getting hands-on experience with statistical analysis is essential for building your skills and confidence.
+
+Watch the video using this [Link](https://www.youtube.com/watch?v=gMejl9C1K2E)
+
+## Data Entry
+
+Data entry is the process of transferring collected information into a digital format for analysis. Accurate data entry is essential because errors, inconsistencies, and missing values can compromise the quality and reliability of statistical results. Before analysis, ensure that variables are correctly coded, values are entered consistently, and the dataset is checked for errors. Using appropriate data-entry templates, validation rules, and double-checking procedures can help minimize mistakes and improve data quality.
+
+**Remember:** Quality statistical analysis begins with accurate data entry.
+
+### Practical Demonstration videos:
+
+1.  Data entry: [**Data entry and coding in SPSS 101**](https://www.youtube.com/watch?v=a-q8f_rTMsc)
+
+2.  In order to ensure you data is accurate there is therefore a need to clean and prepare your data for statistically analysis. In the following video you are given some insights on data cleaning and how to prepare your data for analysis.
+
+    Watch the video here: [**Part 1 : Data Cleaning and Preparation 101**](https://www.youtube.com/watch?v=McXHw8eSHfc)
+
+## Quantitative Data Diagnostics: Parametric and Non-Parametric Approaches
+
+An important step in analyzing quantitative data is to examine its distribution and assess whether the assumptions required for the intended statistical method are reasonably satisfied. This process, known as **data diagnostics**, helps researchers select appropriate analytical techniques, produce reliable results, and draw valid conclusions.
+
+Quantitative data can be analyzed using **parametric or non-parametric methods**, depending on the research question, study design, type of variable, and assumptions underlying the analysis. Parametric methods typically rely on assumptions about the population distribution or model errors, whereas non-parametric methods generally require fewer distributional assumptions. However, non-parametric methods are not assumption-free.
+
+### 1. Parametric Analysis
+
+Parametric methods are commonly used when their underlying assumptions are reasonably satisfied. These assumptions may include normality of model residuals, independence of observations, homogeneity of variance, and linearity, depending on the statistical method.
+
+Examples include:
+
+-   Independent-samples and paired-samples *t*-tests
+
+-   Analysis of variance (ANOVA) and analysis of covariance (ANCOVA)
+
+-   Pearson correlation
+
+-   Linear regression
+
+Before applying these methods, researchers should consider the data structure, sample size, outliers, and relevant assumptions. For example, in a *t*-test or ANOVA, the normality assumption primarily concerns the errors or residuals within groups, rather than requiring all observed data to be normally distributed. With sufficiently large samples, some parametric procedures are reasonably robust to moderate departures from normality, although this depends on the design and the severity of the departure.
+
+### 2. Non-Parametric Analysis
+
+Non-parametric methods are useful when the assumptions of a corresponding parametric method are not adequately satisfied, particularly when working with ordinal data, highly skewed distributions, or data containing influential outliers. They can also be appropriate when the research question concerns ranks or distributions rather than means.
+
+Examples include:
+
+-   Mann–Whitney U test as an alternative to the independent-samples *t*-test
+
+-   Wilcoxon signed-rank test as an alternative to the paired-samples *t*-test
+
+-   Kruskal–Wallis test as an alternative to one-way ANOVA
+
+-   Spearman rank correlation as an alternative to Pearson correlation when a rank-based association is appropriate
+
+These methods do not all test exactly the same hypotheses as their parametric counterparts. For example, the Mann–Whitney U test compares distributions and can be interpreted as a test of differences in location under additional assumptions; it is not automatically a test of differences in medians.
+
+### 3. Why Data Diagnostics Matter
+
+Checking the data before analysis helps researchers:
+
+1.  **Select the appropriate statistical method:** Determine whether a parametric procedure is suitable or whether a non-parametric alternative or another model is more appropriate.
+
+2.  **Identify unusual observations:** Detect potential data-entry errors, extreme values, or influential observations that may affect results.
+
+3.  **Assess relevant assumptions:** Examine normality, variance patterns, independence, linearity, and other assumptions required by the chosen method.
+
+4.  **Improve interpretation:** Avoid applying statistical tests mechanically when their assumptions or hypotheses do not match the research question.
+
+5.  **Strengthen the credibility of findings:** Make analytical decisions that are transparent, justified, and reproducible.
+
+### 4. Practical Steps for Diagnosing Quantitative Data
+
+A useful diagnostic process includes:
+
+-   **Visual inspection:** Use histograms, density plots, boxplots, and Q–Q plots to examine distribution shape, outliers, and departures from normality.
+
+-   **Numerical summaries:** Examine means, medians, standard deviations, interquartile ranges, skewness, and other relevant descriptive statistics.
+
+-   **Formal testing:** Where appropriate, use tests such as the Shapiro–Wilk test to assess evidence against normality. Interpret these tests alongside graphical diagnostics because their sensitivity depends on sample size.
+
+-   **Assumption checking:** Assess the assumptions relevant to the intended method, such as homogeneity of variance for certain group-comparison procedures.
+
+-   **Method selection:** Choose the parametric method, non-parametric alternative, or another suitable approach that best fits the data, research question, and study design.
+
+**Important:** Do not automatically choose a non-parametric test simply because a normality test is statistically significant. Consider the sample size, graphical evidence, robustness of the intended method, presence of outliers, and the scientific question. Depending on the situation, a transformation, robust method, generalized linear model, or bootstrap approach may be more suitable.
+
+Ultimately, data diagnostics are not just a preliminary technical exercise. They are a fundamental part of responsible statistical analysis, helping researchers determine *which method to use, why it is appropriate, and how its results should be interpreted*.
+
+### 5. How to Run Quantitative Diagnositic Test Using Statistical Software
+
+A. In these short videos, check out how to run **normality test** using the following statistical tools:
+
+1.  [GraphPad Prism, SPSS and JASP](https://www.youtube.com/watch?v=Qa_cfi_Alts)
+2.  [STATA](https://www.youtube.com/watch?v=QCEFZljePaU)
+3.  [Python](https://www.youtube.com/watch?v=Qa_cfi_Alts)
+
+B. Watch this video to see how to be able to determine whether a quantitative data is normally distributed or not using visual inspection using:
+
+1.  [JASP](https://www.youtube.com/watch?v=pWnFekko6do)
+2.  
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
