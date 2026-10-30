@@ -96,8 +96,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction-statistical-analysis-using-different-softwares" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-statistical-analysis-using-different-softwares">Introduction Statistical Analysis Using Different Softwares</h2>
+<section id="introduction-to-statistical-analysis-using-different-softwares" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-statistical-analysis-using-different-softwares">Introduction To Statistical Analysis Using Different Softwares</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="yes_kedulytics%20final.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="228"></p>
@@ -123,6 +123,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Develop confidence in independent data analysis</strong> by identifying and following tutorials that address specific research questions and analytical challenges.</p></li>
 </ol>
 <p>The objectives are intended to guide readers through the learning process, from understanding basic statistical principles to applying analytical methods in practical research settings.</p>
+</section>
+<section id="how-to-install-r" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-install-r">How to install R</h2>
+<p>To follow the statistical demonstrations in this book, you need to install R and RStudio Desktop on your computer.</p>
+<section id="step-1-install-r" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-install-r">Step 1: Install R</h3>
+<ol type="1">
+<li><p>Visit the official R website: <a href="https://cran.r-project.org/">CRAN – The Comprehensive R Archive Network</a></p></li>
+<li><p>Select your operating system (Windows, macOS, or Linux).</p></li>
+<li><p>Download the latest version of R.</p></li>
+<li><p>Run the installer and follow the installation instructions.</p></li>
+</ol>
+</section>
+<section id="step-2-install-rstudio-desktop" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-install-rstudio-desktop">Step 2: Install RStudio Desktop</h3>
+<ol type="1">
+<li><p>Visit <a href="https://docs.posit.co/ide/user/#rstudio-ide-oss-downloads?ref=rstudio-legacy">Posit – RStudio Desktop</a></p></li>
+<li><p>Download the free RStudio Desktop version.</p></li>
+<li><p>Install it using the default settings.</p></li>
+</ol>
+</section>
+<section id="step-3-open-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-open-rstudio">Step 3: Open RStudio</h3>
+<p>Launch RStudio Desktop. It should automatically detect your R installation. You are now ready to write and run R code.</p>
+</section>
 </section>
 <section id="welcome-video" class="level2">
 <h2 class="anchored" data-anchor-id="welcome-video">Welcome Video</h2>
@@ -209,11 +234,121 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 </section>
-<section id="running-code" class="level2">
-<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+<section id="descriptive-statistics-using-survey-data-with-r" class="level1">
+<h1>Descriptive Statistics Using Survey Data (With R)</h1>
+<p>This demonstration shows how to calculate descriptive statistics for categorical variables using both conventional frequency distributions and survey-weighted proportions. We will use the <code>esther_combine</code> dataset as an example (<strong>Please reach out this email: kedulytics@gmail.com for the dataset</strong>).</p>
+<p>Survey-weighted estimates are particularly important when analyzing complex survey data, such as the Youth Risk Behavior Surveillance System (YRBSS), because they account for sampling weights, strata, and primary sampling units (PSUs).</p>
+<section id="load-the-required-package-and-prepare-the-survey-design" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-required-package-and-prepare-the-survey-design">1. Load the Required Package and Prepare the Survey Design</h2>
+<p>First, load the <code>survey</code> package and specify the survey design.</p>
+<pre><code># Install the survey package if not already installed 
+
+install.packages("survey")  
+library(survey)  
+
+# Adjust for strata containing a single PSU 
+
+options(survey.lonely.psu = "adjust") 
+
+#Create survey design 
+
+yrbss_design &lt;- svydesign(
+  ids = ~psu,
+  strata = ~stratum,
+  weights = ~weight,
+  data = esther_combine,
+  nest = TRUE
+)</code></pre>
+</section>
+<section id="descriptive-statistics-for-sex" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-statistics-for-sex">2. Descriptive Statistics for Sex</h2>
+<p>We begin by examining the distribution of sex. In this dataset, sex is coded as 1 = Female and 2 = Male.</p>
+<section id="unweighted-frequencies-and-percentages" class="level3">
+<h3 class="anchored" data-anchor-id="unweighted-frequencies-and-percentages">Unweighted frequencies and percentages</h3>
+<pre><code># Frequency distribution 
+table(esther_combine$sex)  
+# Proportions 
+prop.table(table(esther_combine$sex)) * 100</code></pre>
+</section>
+<section id="survey-weighted-percentages" class="level3">
+<h3 class="anchored" data-anchor-id="survey-weighted-percentages">Survey-weighted percentages</h3>
+<pre><code>prop_sex &lt;- svymean(
+  ~factor(sex),
+  design = yrbss_design,
+  na.rm = TRUE
+)
+
+# Display proportions as percentages
+prop_sex * 100</code></pre>
+</section>
+</section>
+<section id="descriptive-statistics-for-grade-category" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-statistics-for-grade-category">3. Descriptive Statistics for Grade Category</h2>
+<p>Next, examine the distribution of students across grade categories.</p>
+<section id="unweighted-frequencies-and-percentages-1" class="level3">
+<h3 class="anchored" data-anchor-id="unweighted-frequencies-and-percentages-1">Unweighted frequencies and percentages</h3>
+<pre><code># Frequency distribution 
+table(esther_combine$grade)  
+
+# Percentages 
+prop.table(table(esther_combine$grade)) * 100</code></pre>
+</section>
+<section id="survey-weighted-percentages-1" class="level3">
+<h3 class="anchored" data-anchor-id="survey-weighted-percentages-1">Survey-weighted percentages</h3>
+<pre><code>prop_grade &lt;- svymean(
+  ~factor(grade),
+  design = yrbss_design,
+  na.rm = TRUE
+)
+prop_grade * 100</code></pre>
+</section>
+</section>
+<section id="descriptive-statistics-for-raceethnicity" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-statistics-for-raceethnicity">4. Descriptive Statistics for Race/Ethnicity</h2>
+<p>We can also examine the racial and ethnic composition of the study population using the <code>race4</code> variable.</p>
+<section id="unweighted-frequencies-and-percentages-2" class="level3">
+<h3 class="anchored" data-anchor-id="unweighted-frequencies-and-percentages-2">Unweighted frequencies and percentages</h3>
+<pre><code># Frequency distribution 
+table(esther_combine$race4)  
+
+# Percentages 
+prop.table(table(esther_combine$race4)) * 100</code></pre>
+</section>
+<section id="survey-weighted-percentages-2" class="level3">
+<h3 class="anchored" data-anchor-id="survey-weighted-percentages-2">Survey-weighted percentages</h3>
+<pre><code>prop_race4 &lt;- svymean(
+  ~factor(race4),
+  design = yrbss_design,
+  na.rm = TRUE
+)
+prop_race4 * 100</code></pre>
+</section>
+</section>
+<section id="descriptive-statistics-by-state" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-statistics-by-state">5. Descriptive Statistics by State</h2>
+<p>Finally, examine the distribution of participants across states.</p>
+<section id="unweighted-frequencies-and-percentages-3" class="level3">
+<h3 class="anchored" data-anchor-id="unweighted-frequencies-and-percentages-3">Unweighted frequencies and percentages</h3>
+<pre><code># Frequency distribution by state 
+
+table(esther_combine$sitename)  
+# Percentages by state 
+prop.table(table(esther_combine$sitename)) * 100</code></pre>
+</section>
+<section id="survey-weighted-percentages-3" class="level3">
+<h3 class="anchored" data-anchor-id="survey-weighted-percentages-3">Survey-weighted percentages</h3>
+<pre><code>states &lt;- svymean(
+  ~factor(sitename),
+  design = yrbss_design,
+  na.rm = TRUE
+)
+states * 100</code></pre>
+</section>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
@@ -225,6 +360,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+</section>
 </section>
 
 </main>
